@@ -1,0 +1,3120 @@
+Solution to exercise 1.1.1
+//Solution to programming exercise 1, Section 1, Chapter 1
+//File: \KW\CH01\Resizable.java startLine: 0 endLine 14
+package KW.CH01;
+
+/**
+ *  Interface to define the method resize
+ */
+public interface Resizable {
+
+    /**
+     *  Method to resize the object
+     */
+    void resize();
+}
+
+Solution to exercise 1.1.3
+//Solution to programming exercise 3, Section 1, Chapter 1
+//File: \KW\CH01\Person.java startLine: 212 endLine 225
+    /**
+     * Method to set the family name of this Person to a new value provided that
+     * justMarried is true.
+     *
+     * @param justMarried true if this Person's name is to be changed
+     * @param newFamily The new family name if justMarried is true
+     *
+     * @post familyName is equal to newFamily if justMarried is true otherwise
+     * no change is made to this Person
+     */
+
+
+Solution to exercise 1.2.1
+//Solution to programming exercise 1, Section 2, Chapter 1
+//File: \KW\CH01\Computer.java startLine: 60 endLine 90
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setManufacurer(String man) {
+        manufacturer = man;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public void setRamSize(int ram) {
+        ramSize = ram;
+    }
+
+    public void setDiskSize(int disk) {
+        diskSize = disk;
+    }
+
+    public void setProcessorSpeed(double procSpeed) {
+        processorSpeed = procSpeed;
+    }
+
+
+Solution to exercise 1.3.1
+//Solution to programming exercise 1, Section 3, Chapter 1
+//File: \KW\CH01\Computer.java startLine: 37 endLine 43
+    public Computer(String processor, double ram, int disk) {
+        this("Default", processor, ram, disk, 3.5);
+    }
+
+//Solution to programming exercise 1, Section 3, Chapter 1
+//File: \KW\CH01\Notebook.java startLine: 34 endLine 39
+    public Notebook(String processor, double ram, int disk) {
+        this("Default", processor, ram, disk, 2.5, 17, 5.5);
+    }
+
+Solution to exercise 1.3.3
+//Solution to programming exercise 3, Section 3, Chapter 1
+//File: \KW\CH01\Notebook.java startLine: 59 endLine 62
+    // See the solution for 1.2.2
+
+Solution to exercise 1.4.1
+//Solution to programming exercise 1, Section 4, Chapter 1
+//File: \KW\CH01\Vegetable.java startLine: 0 endLine 54
+package KW.CH01;
+
+/**
+ * Class to represent a Vegetable
+ */
+public class Vegetable extends Food {
+
+    /** Calories from protein */
+    private static final double VEG_PROTEIN_CAL = 0.35;
+    /** Calories from fat */
+    private static final double VEG_FAT_CAL = 0.15;
+    /** Calories from carbohydrates */
+    private static final double VEG_CARBO_CAL = 0.50;
+    /** The name of the vegetable */
+    private final String name;
+
+    /**
+     * Constructor
+     * @param name The name of the vegetable
+     */
+    public Vegetable(String name) {
+        this.name = name;
+        setCalories(VEG_PROTEIN_CAL + VEG_FAT_CAL + VEG_CARBO_CAL);
+    }
+
+    /** 
+     * Calculates the percent of protein in a Food object.
+     * @return The percentage of protein
+     */
+    @Override
+    public double percentProtein() {
+        return VEG_PROTEIN_CAL / getCalories();
+    }
+
+    /** 
+     * Calculates the percent of fat in a Food object.
+     * @return The percentage of fat
+     */
+    @Override
+    public double percentFat() {
+        return VEG_FAT_CAL / getCalories();
+    }
+
+    /** 
+     * Calculates the percent of carbohydrates in a Food object.
+     * @return The percentage of carbohydrates
+     */
+    @Override
+    public double percentCarbohydrates() {
+        return VEG_CARBO_CAL / getCalories();
+    }
+}
+
+Solution to exercise 1.5.1
+//Solution to programming exercise 1, Section 5, Chapter 1
+//File: \KW\CH01\Computer.java startLine: 130 endLine 164
+    /**
+     * Determine if this Computer is equal to the other
+     * object
+     *
+     * @param obj The object to compare this Computer to
+     *
+     * @return true If the other object is of type Computer and all
+     *         data fields are equal
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() == this.getClass()) {
+            Computer other = (Computer) obj;
+
+            return getManufacturer().equals(other.getManufacturer())
+                    && getProcessor().equals(other.getProcessor())
+                    && (getRamSize() == other.getRamSize())
+                    && (getDiskSize() == other.getDiskSize())
+                    && (getProcessorSpeed() == other.getProcessorSpeed());
+        } else {
+            return false;
+        }
+    }
+
+
+Solution to exercise 1.5.3
+//Solution to programming exercise 3, Section 5, Chapter 1
+//File: \KW\CH01\Airplane.java startLine: 11 endLine 34
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() == this.getClass()) {
+            Airplane other = (Airplane) obj;
+
+            return eng.equals(other.eng) && rud.equals(other.rud)
+                    && wings[0].equals(other.wings[0])
+                    && wings[1].equals(other.wings[1]);
+        } else {
+            return false;
+        }
+    }
+    // equals methods need to be defined for classes Engine, Rudder, and Wing
+
+Solution to exercise 1.8.1
+//Solution to programming exercise 1, Section 8, Chapter 1
+//File: \KW\CH01\Shapes\Circle.java startLine: 0 endLine 102
+package KW.CH01.Shapes;
+
+import java.util.Scanner;
+
+/**
+ * Represents a circle.
+ * Extends AbstrtactShape.
+ */
+public class Circle extends AbstrtactShape {
+    // Data Fields
+
+    /** The radius of the circle */
+    private double radius = 0;
+
+    // Constructors
+    /** Constructs a default Circle */
+    public Circle() {
+        super("Circle");
+    }
+
+    /**
+     * Constructs a circle of the specified size.
+     * @param radius the radius
+     */
+    public Circle(double radius) {
+        super("Circle");
+        this.radius = radius;
+    }
+
+    // Methods
+    /**
+     * Get the radius.
+     * @return The radius
+     */
+    public double getRadius() {
+        return radius;
+    }
+    
+    /**
+     * Set the radius
+     * @param radius the new value of the radius
+     */
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+    
+    /**
+     * Get the width of the circle
+     * @return Two times the radius
+     */
+    @Override
+    public double getWidth() {
+        return 2 * radius;
+    }
+    
+    /**
+     * Get the height of the circle
+     * @return Two times the radius
+     */
+    @Override
+    public double getHeight() {
+        return 2 * radius;
+    }
+    
+
+    /**
+     * Compute the area.
+     * @return The area of the circle
+     */
+    @Override
+    public double computeArea() {
+        return Math.PI * radius * radius;
+    }
+
+    /**
+     * Compute the perimeter.
+     * @return The perimeter of the circle
+     */
+    @Override
+    public double computePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    /** Read the attributes of the circle. */
+    @Override
+    public void readShapeData() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the radius of the Circle");
+        radius = in.nextDouble();
+    }
+
+    /**
+     * Create a string representation of the circle.
+     * @return A string representation of the circle
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ": radius is " + radius;
+    }
+}
+
+Solution to exercise 10.2.1
+//Solution to programming exercise 1, Section 2, Chapter 10
+//File: \KW\CH10\Edge.java startLine: 0 endLine 108
+package KW.CH10;
+
+/** An Edge represents a relationship between two
+ *  vertices.
+ *  @author Koffman and Wolfgang
+ */
+public class Edge {
+    // Data Fields
+
+    /** The source vertex */
+    private final int source;
+    /** The destination vertex */
+    private final int dest;
+    /** The weight */
+    private final double weight;
+
+    // Constructor
+    /** Construct an Edge with a source of from
+     *  and a destination of to. Set the weight
+     *  to 1.0.
+     *  @param source - The source vertex
+     *  @param dest - The destination vertex
+     */
+    public Edge(int source, int dest) {
+        this.source = source;
+        this.dest = dest;
+        weight = 1.0;
+    }
+
+    /** Construct a weighted edge with a source
+     *  of from and a destination of to. Set the
+     *  weight to w.
+     *  @param source - The source vertex
+     *  @param dest - The destination vertex
+     *  @param w - The weight
+     */
+    public Edge(int source, int dest, double w) {
+        this.source = source;
+        this.dest = dest;
+        weight = w;
+    }
+
+    // Methods
+    /** Get the source
+     *  @return The value of source
+     */
+    public int getSource() {
+        return source;
+    }
+
+    /** Get the destination
+     *  @return The value of dest
+     */
+    public int getDest() {
+        return dest;
+    }
+
+    /** Get the weight
+     *  @return the value of weight
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /** Return a String representation of the edge
+     *  @return A String representation of the edge
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[(");
+        sb.append(Integer.toString(source));
+        sb.append(", ");
+        sb.append(Integer.toString(dest));
+        sb.append("): ");
+        sb.append(Double.toString(weight));
+        sb.append("]");
+        return sb.toString();
+    }
+
+    /** Return true if two edges are equal. Edges
+     *  are equal if the source and destination
+     *  are equal. Weight is not considered.
+     *  @param obj The object to compare to
+     *  @return true if the edges have the same source
+     *  and destination
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Edge) {
+            Edge edge = (Edge) obj;
+            return (source == edge.source && dest == edge.dest);
+        } else {
+            return false;
+        }
+    }
+
+    /** Return a hash code for an edge.  The hash
+     *  code is the source shifted left 16 bits
+     *  exclusive or with the dest
+     *  @return a hash code for an edge
+     */
+    @Override
+    public int hashCode() {
+        return (source << 16) ^ dest;
+    }
+}
+
+Solution to exercise 10.3.1
+//Solution to programming exercise 1, Section 3, Chapter 10
+//File: \KW\CH10\AbstractGraph.java startLine: 60 endLine 76
+    public void loadEdgesFromFile(Scanner scan) {
+        String line;
+        while (scan.hasNextLine()) {
+            line = scan.nextLine();
+            String[] tokens = line.split("\\s+");
+            int source = Integer.parseInt(tokens[0]);
+            int dest = Integer.parseInt(tokens[1]);
+            double weight = 1.0;
+            if (tokens.length == 3) {
+                weight = Double.parseDouble(tokens[2]);
+            }
+            insertEdge(new Edge(source, dest, weight));
+        }
+    }
+
+Solution to exercise 10.4.1
+//Solution to programming exercise 1, Section 4, Chapter 10
+//File: \KW\CH10\DepthFirstSearch.java startLine: 51 endLine 77
+    /**
+     * Construct the depth-first search of a Graph
+     * selecting the start vertices in the specified order.
+     * The first vertex visited is order[0].
+     * @param graph The graph
+     * @param order The array giving the order
+     * in which the start vertices should be selected
+     */
+    public DepthFirstSearch(Graph graph, int[] order) {
+        this.graph = graph;
+        int n = graph.getNumV();
+        parent = new int[n];
+        visited = new boolean[n];
+        discoveryOrder = new int[n];
+        finishOrder = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = -1;
+        }
+        for (int i = 0; i < n; i++) {
+            if (!visited[order[i]]) {
+                depthFirstSearch(i);
+            }
+        }
+    }
+//Solution to programming exercise 1, Section 4, Chapter 10
+//File: \KW\CH10\DepthFirstSearch.java startLine: 104 endLine 126
+    /** Get the finish order
+     *  @return finish order
+     */
+    public int[] getFinishOrder() {
+        return finishOrder;
+    }
+
+    /** Get the discovery  order
+     *  @return discovery order
+     */
+    public int[] getDiscoveryOrder() {
+        return discoveryOrder;
+    }
+
+    /** Get the parent
+     *  @return the parent
+     */
+    public int[] getParent() {
+        return parent;
+    }
+
+Solution to exercise 2.1.1
+//Solution to programming exercise 1, Section 1, Chapter 2
+//File: \KW\CH02\Question_2_1_1.java startLine: 1 endLine 16
+
+public class Question_2_1_1 {
+
+    public static void main(String[] args) {
+        int n;
+        int y1;
+        int y2;
+        System.out.printf("%10s%10s%10s%n", "n", "y1", "y2");
+        for (n = 0; n <= 100; n += 10) {
+            System.out.printf("%10d%10d%10d%n", n, 100 * n + 10, 5 * n * n + 2);
+        }
+    }
+}
+
+Solution to exercise 2.2.1
+//Solution to programming exercise 1, Section 2, Chapter 2
+//File: \KW\CH02\Exercises.java startLine: 9 endLine 28
+    /**
+     * Method to replace each occurrence of oldItem with newItem
+     * in an ArrayList&lt;String&gt;
+     * @param aList The ArrayList in which items are to be replaced
+     * @param oldItem The item to be replaced
+     * @param newItem The item to replace oldItem
+     * @post All occurrences of oldItem have been replaced with newItem
+     */
+    public static void replace(ArrayList<String> aList,
+            String oldItem,
+            String newItem) {
+        int index = aList.indexOf(oldItem);
+        while (index != -1) {
+            aList.set(index, newItem);
+            index = aList.indexOf(oldItem);
+        }
+    }
+
+Solution to exercise 2.3.1
+//Solution to programming exercise 1, Section 3, Chapter 2
+//File: \KW\CH02\PhoneDirectory.java startLine: 16 endLine 40
+    /**
+     * Add an entry or change an existing entry.
+     * @param name The name of the person being added or changed.
+     * @param newNumber The new number to be assigned.
+     * @return The old number, or if a new entry, null.
+     */
+    public String addOrChangeEntry(String name,
+            String newNumber) {
+        int index = 0;
+        String oldNumber = null;
+        while (index < theDirectory.size()
+                && !theDirectory.get(index).getName().equals(name)) {
+            index++;
+        }
+        if (index < theDirectory.size()) {
+            oldNumber = theDirectory.get(index).getNumber();
+            theDirectory.get(index).setNumber(newNumber);
+        } else {
+            theDirectory.add(new DirectoryEntry(name, newNumber));
+        }
+        return oldNumber;
+    }
+
+Solution to exercise 2.11.3
+//Solution to programming exercise 3, Section 11, Chapter 2
+//File: \KW\CH02\SearchArray.java startLine: 0 endLine 35
+package KW.CH02;
+
+/**
+ * Class to encapsulate searchArray method and its test
+ */
+public class SearchArray {
+
+    /**
+     * Method to search part of an array for a target value
+     * @param array The array to search
+     * @param target The target value
+     * @param minIndex The index to start the search
+     * @param maxIndex The index to end the search
+     * @param <T> The type of data in the array.
+     * @return The index of the target or -1 if not found
+     * @throws ArrayIndexOutOfBoundsException if minIndex is &lt; 0
+     * or if the target is not found and maxIndex &gt; array.length-1
+     * @throws IllegalArgumentException if maxIndex &lt; minIndex
+     * @throws NullPointerException if array or target are null
+     */
+    public static <T> int search(T[] array, T target, int minIndex, int maxIndex) {
+        if (maxIndex < minIndex) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = minIndex; i <= maxIndex; i++) {
+            if (target.equals(array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+}
+
+Solution to exercise 3.2.1
+//Solution to programming exercise 1, Section 2, Chapter 3
+//File: \KW\CH03\Exercises.java startLine: 9 endLine 35
+    /**
+     * Search an array for a target value.
+     *
+     * @param theArray The array to be searched
+     * @param target The value sought
+     * @param start The start index for the search
+     * @param end The end index for the search
+     * @return index of the target or end if not found.
+     * @throws IllegalArgumentException if end <= start
+     * @
+     * throws ArrayIndexOutOfBounds if start or end is not in the array
+     */
+    public static int search(int[] theArray, int target, int start, int end) {
+        if (end <= start) {
+            throw new IllegalArgumentException("Null search range start: " 
+                    + start + " end: " + end);
+        }
+        for (int i = start; i < end; i++) {
+            if (target == theArray[i]) {
+                return i;
+            }
+        }
+        return end;
+    }
+
+Solution to exercise 3.3.1
+//Solution to programming exercise 1, Section 3, Chapter 3
+//File: \KW\CH03\Exercises.java startLine: 36 endLine 59
+    /**
+     * Driver for readInt
+     */
+    public static void driverForReadInt() {
+        System.out.println("Verify that the prompt says \"\"Enter weight\" "
+                + "\nEnter an integer between 2 and 5\"");
+        System.out.println("Enter an non-numeric value and verify that the message"
+                + "\"Bad numbric string - Try again\" is displayed"
+                + "followed by the prompt");
+        System.out.println("Then enter a zero and verify that the prompt is rpeated");
+        System.out.println("Then entar a 7 and verify that the prompt is repeated");
+        System.out.println("Finally enter a 3");
+        int result = MyInput.readInt("Enter weight", 2, 5);
+        System.out.println("The value entered was " + result);
+        try {
+            MyInput.readInt("", 5, 2);
+            System.out.println("Exception was not thrown");
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Exception was thrown as expected");
+        }
+    }
+
+Solution to exercise 3.4.1
+//Solution to programming exercise 1, Section 4, Chapter 3
+//File: \KW\CH04\InfixToPostfixParensExp.java startLine: 0 endLine 153
+package KW.CH04;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.EmptyStackException;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+import java.util.StringJoiner;
+
+/** Translates an infix expression with parentheses
+ *  to a postfix expression.
+ *  @author Koffman & Wolfgang
+ */
+public class InfixToPostfixParensExp {
+    
+    private InfixToPostfixParensExp() {}
+
+    // Nested Class
+    /** Class to report a syntax error. */
+    public static class SyntaxErrorException
+            extends Exception {
+
+        /**
+         * Construct a SyntaxErrorException with the specified
+         * message.
+         * @param message The message
+         */
+        SyntaxErrorException(String message) {
+            super(message);
+        }
+    }
+    // Data Fields
+    /** The operators */
+    private static final String OPERATORS = "-+*/^()";
+    /**
+     * The Pattern to extract tokens
+     * A token is either a string of digits (\d+)
+     * or a JavaIdentifier
+     * or an operator
+     */
+    private static final String PATTERN =
+            "\\d+\\.\\d*|\\d+|\\p{L}[\\p{L}\\p{N}]*|[" + OPERATORS + "]";
+    /** The precedence of the operators, matches order of OPERATORS. */
+    private static final int[] PRECEDENCE = {1, 1, 2, 2, 3, -1, -1};
+    /** The postfix string */
+    private StringBuilder postfix;
+
+    /**
+     * Convert a string from infix to postfix.
+     * @param infix The infix expression
+     * @throws SyntaxErrorException
+     */
+    public static String convert(String infix) throws SyntaxErrorException {
+        Deque<Character> operatorStack = new ArrayDeque<>();
+        StringJoiner postfix = new StringJoiner(" ");
+        Scanner scan = new Scanner(infix);
+        try {
+            // Process each token in the infix string.
+            String nextToken;
+            while ((nextToken = scan.findInLine(PATTERN)) != null) {
+                char firstChar = nextToken.charAt(0);
+                // Is it an operand?
+                if (Character.isJavaIdentifierStart(firstChar)
+                        || Character.isDigit(firstChar)) {
+                    postfix.add(nextToken);
+                } // Is it an operator?
+                else if (isOperator(firstChar)) {
+                    processOperator(firstChar, operatorStack, postfix);
+                } else {
+                    throw new SyntaxErrorException("Unexpected Character Encountered: "
+                            + firstChar);
+                }
+            } // End while.
+            // Pop any remaining operators
+            // and append them to postfix.
+            while (!operatorStack.isEmpty()) {
+                char op = operatorStack.pop();
+                // Any '(' on the stack is not matched.
+                if (op == '(') {
+                    throw new SyntaxErrorException(
+                            "Unmatched opening parenthesis");
+                }
+                postfix.add(Character.toString(op));
+            }
+            // assert: Stack is empty, return result.
+            return postfix.toString();
+        } catch (EmptyStackException ex) {
+            throw new SyntaxErrorException("Syntax Error: The stack is empty");
+        }
+    }
+
+    /**
+     * Method to process operators.
+     * @param op The operator
+     * @throws EmptyStackException
+     */
+    private static void processOperator(char op, 
+            Deque<Character> operatorStack, StringJoiner postfix) {
+        if (operatorStack.isEmpty() || op == '(') {
+            operatorStack.push(op);
+        } else {
+            // Peek the operator stack and
+            // let topOp be the top operator.
+            char topOp = operatorStack.peek();
+            if (precedence(op) > precedence(topOp)) {
+                operatorStack.push(op);
+            } else {
+                // Pop all stacked operators with equal
+                // or higher precedence than op.
+                while (!operatorStack.isEmpty()
+                        && precedence(op) <= precedence(topOp)) {
+                    operatorStack.pop();
+                    if (topOp == '(') {
+                        // Matching '(' popped - exit loop.
+                        break;
+                    }
+                    postfix.add(Character.toString(topOp));
+                    if (!operatorStack.isEmpty()) {
+                        // Reset topOp.
+                        topOp = operatorStack.peek();
+                    }
+                }
+
+                // assert: Operator stack is empty or
+                //         current operator precedence >
+                //         top of stack operator precedence.
+                if (op != ')') {
+                    operatorStack.push(op);
+                }
+            }
+        }
+    }
+
+    /**
+     * Determine whether a character is an operator.
+     * @param ch The character to be tested
+     * @return true if ch is an operator
+     */
+    private static boolean isOperator(char ch) {
+        return OPERATORS.indexOf(ch) != -1;
+    }
+
+    /**
+     * Determine the precedence of an operator.
+     * @param op The operator
+     * @return the precedence
+     */
+    private static int precedence(char op) {
+        return PRECEDENCE[OPERATORS.indexOf(op)];
+    }
+}
+
+Solution to exercise 3.6.1
+//Solution to programming exercise 1, Section 6, Chapter 3
+//File: \KW\CH03\MyInputTest.java startLine: 61 endLine 80
+    @Test
+    public void testThatPromptIsCorrectForInvalidInput() {
+        ByteArrayInputStream testIn = 
+                new ByteArrayInputStream("XX\n3".getBytes());
+        System.setIn(testIn);
+        ByteArrayOutputStream testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
+        int n = MyInput.readInt("Enter weight", 2, 5);
+        assertEquals(n, 3);
+        String displayedPrompt = testOut.toString();
+        String expectedPrompt = "Enter weight" + 
+                "\nEnter an integer between 2 and 5" + NL +
+                "Bad numbric string - Try again" + NL +
+                "Enter weight" + 
+                "\nEnter an integer between 2 and 5" + NL;
+        assertEquals(expectedPrompt, displayedPrompt);
+    }
+
+Solution to exercise 3.7.1
+//Solution to programming exercise 1, Section 7, Chapter 3
+//File: \KW\CH03\GetSentence.java startLine: 10 endLine 13
+    public static final boolean TESTING = true;
+//Solution to programming exercise 1, Section 7, Chapter 3
+//File: \KW\CH03\GetSentence.java startLine: 26 endLine 30
+            if (TESTING)
+                System.out.println("!!! Next word is " + word + ", count is " + count);
+
+Solution to exercise 4.1.1
+//Solution to programming exercise 1, Section 1, Chapter 4
+//File: \KW\CH04\Exercise_4_1.java startLine: 9 endLine 22
+        Deque<Integer> stack1 = new ArrayDeque<>();
+        Deque<Integer> stack2 = new ArrayDeque<>();
+        Deque<Integer> stack3 = new ArrayDeque<>();
+
+        int[] numbers = {-1, 15, 23, 44, 4, 99};
+
+        for (int i = 0; i < numbers.length; i++) {
+            stack1.push(numbers[i]);
+            stack2.push(numbers[i]);
+        }
+
+
+Solution to exercise 4.1.3
+//Solution to programming exercise 3, Section 1, Chapter 4
+//File: \KW\CH04\Exercise_4_1.java startLine: 29 endLine 42
+        while (!stack2.isEmpty()) {
+            System.out.println(stack2.pop() + "\t" + stack3.pop());
+        }
+        /* Expected Output
+        99      -1
+        4       15
+        44      23
+        23      44
+        15      4
+        -1      99
+         */
+
+Solution to exercise 4.2.1
+//Solution to programming exercise 1, Section 2, Chapter 4
+//File: \KW\CH04\Exercise_4_2_1.java startLine: 9 endLine 23
+    public static String reverseWords(String sentence) {
+        String[] words = sentence.split("\\s+");
+        Deque<String> stack = new ArrayDeque<>();
+        for (String word : words) {
+            stack.push(word);
+        }
+        StringJoiner sj = new StringJoiner(" ");
+        while (!stack.isEmpty()) {
+            sj.add(stack.pop());
+        }
+        return sj.toString();
+    }
+
+Solution to exercise 4.2.3
+//Solution to programming exercise 3, Section 2, Chapter 4
+//File: \KW\CH04\Exercise_4_2_3.java startLine: 4 endLine 13
+    public static boolean isPalindrome(String s) {
+        StringBuilder reversed = new StringBuilder();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            reversed.append(s.charAt(i));
+        }
+        return s.equalsIgnoreCase(reversed.toString());
+    }
+
+Solution to exercise 4.3.3
+//Solution to programming exercise 3, Section 3, Chapter 4
+//File: \KW\CH04\ArrayQueue.java startLine: 109 endLine 128
+    /**
+     * Return the size of the queue
+     * @return The number of items in the queue
+     */
+    @Override
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Returns an iterator to the elements in the queue
+     * @return an iterator to the elements in the queue
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new Iter();
+    }
+
+Solution to exercise 4.3.5
+//Solution to programming exercise 5, Section 3, Chapter 4
+//File: \KW\CH04\ListQueueReverse.java startLine: 57 endLine 109
+    /**
+     * Insert an item at the rear of the queue.
+     * @post item is added to the rear of the queue.
+     * @param item The element to add
+     * @return true (always successful)
+     */
+    @Override
+    public boolean offer(E item) {
+        // Check for empty queue.
+        if (front == null) {
+            rear = new Node<>(item);
+            front = rear;
+        } else {
+            // Allocate a new node at the beginning, store item in it, and
+            // link it to old end of queue.
+            Node<E> newNode = new Node<>(item);
+            newNode.next = rear;
+            rear = newNode;
+        }
+        size++;
+        return true;
+    }
+
+    /**
+     * Remove the entry at the front of the queue and return it
+     * if the queue is not empty.
+     * @post front references item that was second in the queue.
+     * @return The item removed if successful, or null if not
+     */
+    @Override
+    public E poll() {
+        E item = peek(); // Retrieve item at front.
+        if (item == null) {
+            return null;
+        }
+        // Remove item at front.
+        if (front == rear) {
+            front = null;
+            rear = null;
+        } else {
+            Node<E> current = rear;
+            while (current.next != front) {
+                current = current.next;
+            }
+            current.next = null;
+            front = current;
+        }
+        size--;
+        return item; // Return data at front of queue.
+    }
+
+Solution to exercise 4.4.1
+//Solution to programming exercise 1, Section 4, Chapter 4
+//File: \KW\CH04\LinkedStack.java startLine: 103 endLine 118
+    /**
+     * Method to determine the number of items on the stack
+     * @return the number of items on the stack
+     */
+    public int size() {
+        int count = 0;
+        Node<E> current = topOfStackRef;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+
+Solution to exercise 4.5.1
+//Solution to programming exercise 1, Section 5, Chapter 4
+//File: \KW\CH04\Exercise_4_5_old.java startLine: 10 endLine 23
+        Deque<Integer> stack1 = new ArrayDeque<>();
+        Deque<Integer> stack2 = new ArrayDeque<>();
+        Queue<Integer> queue = new ArrayDeque<>();
+
+        int[] numbers = {-1, 15, 23, 44, 4, 99};
+
+        for (int i = 0; i < numbers.length; i++) {
+            stack1.push(numbers[i]);
+            stack2.push(numbers[i]);
+        }
+
+
+Solution to exercise 4.5.3
+//Solution to programming exercise 3, Section 5, Chapter 4
+//File: \KW\CH04\Exercise_4_5_old.java startLine: 30 endLine 42
+        while (!stack2.isEmpty()) {
+            System.out.println(stack2.pop() + "\t" + queue.poll());
+        }
+        // Expected Output
+        // 99      99
+        // 4       4
+        // 44      44
+        // 23      23
+        // 15      15
+        // -1      -1	
+//Solution to programming exercise 3, Section 5, Chapter 4
+//File: \KW\CH04\AirlineSim\AirlineCheckinSim.java startLine: 55 endLine 139
+    /** Method to read the simulation parameters */
+    private void enterData() {
+        Scanner in = new Scanner(System.in);
+        String reply;
+        System.out.print("Expected number of frequent flyer arrivals per hour: ");
+        reply = in.nextLine();
+        frequentFlyerQueue.setArrivalRate(Double.parseDouble(reply) / 60.0);
+        System.out.print("Expected number of regular passenger arrivals per hour: ");
+        reply = in.nextLine();
+        regularPassengerQueue.setArrivalRate(Double.parseDouble(reply) / 60.0);
+        System.out.printf("%s%n%s","Enter the maximum number of frequent flyers",
+                "served between regualr passengers ");
+        reply = in.nextLine();
+        frequentFlyerMax = Integer.parseInt(reply);
+        System.out.print("Enter the maximim service time in minutes ");
+        reply = in.nextLine();
+        maxPocessingTime = Integer.parseInt(reply);
+        Passenger.setMaxProcessingTime(maxPocessingTime);
+        System.out.print( "Enter the total simulation time in minutes" );
+        reply = in.nextLine();
+        totalTime = Integer.parseInt(reply);
+        System.out.print("Display minute-by-minute trace of simulation (Y or N)" );
+        reply = in.nextLine();
+        showAll = (reply.charAt(0) == 'Y') || (reply.charAt(0) == 'y');
+        /*<exercise chapter="4" section="5" type="programming" number="2">*/
+        System.out.print("Set simulation granularity to seconds (Y or N)");
+        reply = in.nextLine();
+        if ((reply.charAt(0) == 'Y') || (reply.charAt(0) == 'y')) {
+            frequentFlyerQueue.setArrivalRate(frequentFlyerQueue.getArrivalRate() / 60.0);
+            regularPassengerQueue.setArrivalRate(regularPassengerQueue.getArrivalRate() / 60.0);
+            Passenger.setMaxProcessingTime(Passenger.getMaxProcessingTime() * 60);
+            totalTime *= 60;
+        }
+        /*</exercise>*/
+    }
+
+    public void enterData(String fileName) {
+        try {
+            Properties p = new Properties();
+            p.load(new FileReader(new File(fileName)));
+            String ffArrivals = p.getProperty("frequentFlyerArrivals");
+            if (ffArrivals != null) {
+                Queue<int[]> frequentFlyerArrivals = parseArrivalTimes(ffArrivals);
+                System.out.println("Frequent Flyer Arrivals \n" + ffArrivals);
+                frequentFlyerQueue = new PassengerQueue("Frequent Flyer", frequentFlyerArrivals);
+            } else {
+                double frequentFlyerArrivalRate = Double.parseDouble(p.getProperty("frequentFlyerArrivalRate"));
+                System.out.println("Expected number of frequent flyer arrivals per hour: "
+                        + frequentFlyerArrivalRate);
+                frequentFlyerQueue.setArrivalRate(frequentFlyerArrivalRate / 60);
+            }
+            String rpArrivals = p.getProperty("regularPassengerArrivals");
+            if (rpArrivals != null) {
+                Queue<int[]> regularPassengerArrivals = parseArrivalTimes(rpArrivals);
+                System.out.println("Reqular Passenger Arrivals \n" + rpArrivals);
+                regularPassengerQueue = new PassengerQueue("Regular Passengers", regularPassengerArrivals);
+            } else {
+                double regularPassengerArrivalRate = Double.parseDouble(p.getProperty("regularPassengerArrivalRate"));
+                System.out.println("Expected number of regular passenger arrivals per hour: "
+                        + regularPassengerArrivalRate);
+                regularPassengerQueue.setArrivalRate(regularPassengerArrivalRate / 60);
+            }
+            if (ffArrivals == null && rpArrivals == null) {
+                int maxProcessingTime = Integer.parseInt(p.getProperty("maxProcessingTime"));
+                System.out.println("Maximum service time in minutes: "
+                        + maxProcessingTime);
+                Passenger.setMaxProcessingTime(maxProcessingTime);
+            }
+            frequentFlyerMax = Integer.parseInt(p.getProperty("frequentFlyerMax"));
+            System.out.println("The maximum number of frequent flyers"
+                    + "\nserved between regualar passengers: "
+                    + frequentFlyerMax);
+            totalTime = Integer.parseInt(p.getProperty("totalSimulationTime"));
+            System.out.println("The total simulation time in minutes: " + totalTime);
+            showAll = Boolean.parseBoolean(p.getProperty("showAll"));
+            System.out.println("Display minute-by-minute trace of simulation (Y or N): "
+                    + showAll);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+Solution to exercise 4.6.1
+//Solution to programming exercise 1, Section 6, Chapter 4
+//File: \KW\CH04\MaintainQueue.java startLine: 107 endLine 119
+
+    /**
+     * Create a string representation of the queue contents with each
+     * entry on its own line
+     * @return a String representation of the queue contents
+     */
+    @Override
+    public String toString() {
+        return String.join("\n", customers);
+    }
+
+Solution to exercise 4.7.1
+//Solution to programming exercise 1, Section 7, Chapter 4
+//File: \KW\CH04\ListQueue.java startLine: 110 endLine 172
+    /**
+     * Returns the size of the queue
+     * @return the size of the queue
+     */
+    @Override
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Returns an iterator to the contents of this queue
+     * @return an iterator to the contents of this queue
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new Iter();
+    }
+
+    /**
+     * Inner class to provide an iterator to the contents of
+     * the queue.
+     */
+    private class Iter implements Iterator<E> {
+
+        Node<E> next = front;
+
+        /**
+         * Returns true if there are more elements in the iteration
+         * @return true if there are more elements in the iteration
+         */
+        @Override
+        public boolean hasNext() {
+            return next != null;
+        }
+
+        /**
+         * Return the next item in the iteration and advance the iterator
+         * @return the next item in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public E next() {
+            if (next == null) {
+                throw new NoSuchElementException();
+            }
+            E item = next.data;
+            next = next.next;
+            return item;
+        }
+
+        /**
+         * Removes the last item returned by this iteration
+         * @throws UnsupportedOperationException this operation is not
+         * supported
+         */
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+Solution to exercise 4.7.3
+//Solution to programming exercise 3, Section 7, Chapter 4
+//File: \KW\CH04\ArrayQueue2.java startLine: 127 endLine 131
+        System.arraycopy(theData, front, newData, 0, capacity - front);
+        System.arraycopy(theData, 0, newData, capacity - front, front);
+
+Solution to exercise 4.8.1
+//Solution to programming exercise 1, Section 8, Chapter 4
+//File: \KW\CH04\Exercise_4_8.java startLine: 13 endLine 31
+        final String IS_NUMERIC = "[+-]?(\\d+(\\.\\d*)?|\\.\\d+)";
+        Deque<String> deque = new ArrayDeque<>();
+        int numNumeric = 0;
+        int numOther = 0;
+        Scanner in = new Scanner(System.in);
+        String token;
+        while (in.hasNext()) {
+            token = in.next();
+            if (Pattern.matches(IS_NUMERIC, token)) {
+                deque.addLast(token);
+                numNumeric++;
+            } else {
+                deque.addFirst(token);
+                numOther++;
+            }
+        }
+
+Solution to exercise 4.8.3
+//Solution to programming exercise 3, Section 8, Chapter 4
+//File: \KW\CH04\ArrayQueue.java startLine: 66 endLine 77
+    public boolean addFirst(E item) {
+        if (size == capacity) {
+            reallocate();
+        }
+        size++;
+        front = (front - 1 + capacity) % capacity;
+        theData[front] = item;
+        return true;
+    }
+
+Solution to exercise 5.1.1
+//Solution to programming exercise 1, Section 1, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 244 endLine 257
+    public static int toNumber(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        char next = s.charAt(0);
+        if (Character.isDigit(next)) {
+            return Character.digit(next, 10) + toNumber(s.substring(1));
+        } else {
+            return toNumber(s.substring(1));
+        }
+    }
+
+Solution to exercise 5.1.3
+//Solution to programming exercise 3, Section 1, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 268 endLine 279
+    public static boolean searchString(String str, char ch) {
+        if (str == null || str.length() == 0) {
+            return false;
+        }
+        if (str.charAt(0) == ch) {
+            return true;
+        }
+        return searchString(str.substring(1), ch);
+    }
+
+Solution to exercise 5.2.1
+//Solution to programming exercise 1, Section 2, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 280 endLine 298
+    /**
+     * Recursive power method.
+     * @param x The number being raised to a power
+     * @param n The exponent
+     * @return x raised to the power n
+     */
+    public static double power2(double x, int n) {
+        if (n < 0) {
+            return 1.0 / power2(x, -n);
+        }
+        if (n == 0) {
+            return 1;
+        } else {
+            return x * power2(x, n - 1);
+        }
+    }
+
+Solution to exercise 5.2.3
+//Solution to programming exercise 3, Section 2, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 319 endLine 340
+
+    /**
+     * Recursive method to calculate Fibonacci numbers
+     * (in RecursiveMethods.java).
+     * @pre n >= 1
+     * @param n The position of the Fibonacci number being calculated
+     * @return The Fibonacci number
+     * @throws IllegalArgumentException if n <= 0
+     */
+    public static int fibonacci2(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n <= 0: " + n);
+        }
+        if (n <= 2) {
+            return 1;
+        } else {
+            return fibonacci2(n - 1) + fibonacci2(n - 2);
+        }
+    }
+
+Solution to exercise 5.3.1
+//Solution to programming exercise 1, Section 3, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 372 endLine 385
+    private static int sum(int[] array, int index) {
+        if (index == array.length) {
+            return 0;
+        } else {
+            return array[index] + sum(array, index + 1);
+        }
+    }
+
+    public static int sum(int[] array) {
+        return sum(array, 0);
+    }
+
+Solution to exercise 5.3.3
+//Solution to programming exercise 3, Section 3, Chapter 5
+//File: \KW\CH05\RecursiveMethods.java startLine: 417 endLine 441
+    /**
+     * Method to return the maximum integer in an array
+     * @param array The array of integers to search
+     * @param index The index of the current value to consider
+     * @return the maximum value in the array
+     */
+    private static int max(int[] array, int index) {
+        if (index == array.length - 1) {
+            return array[index];
+        }
+        int maxRest = max(array, index + 1);
+        if (array[index] > maxRest) {
+            return array[index];
+        } else {
+            return maxRest;
+        }
+    }
+
+    /** Wrapper for recursive max method */
+    public static int max(int[] array) {
+        return max(array, 0);
+    }
+
+Solution to exercise 5.4.1
+//Solution to programming exercise 1, Section 4, Chapter 5
+//File: \KW\CH05\LinkedListRec.java startLine: 177 endLine 224
+    /**
+     * Method to determine if two LinkedListRec objects are equal.
+     * Two LinkeListRec objects are considered equal if they are of the
+     * same size and each element in corresponding order are equal using
+     * the object's equals method.
+     * @param obj The other object
+     * @return true of the other obj is equal to this.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        LinkedListRec<E> other = (LinkedListRec<E>) obj;
+        return equals(head, other.head);
+    }
+
+    /**
+     * Recursive method to determine if two LinkedListRec objects are
+     * equal.
+     * @param node1 The current node in this list
+     * @param node2 The current node in the other list
+     */
+    private boolean equals(Node<E> node1, Node<E> node2) {
+        if (node1 == null && node2 == null) {
+            return true;
+        }
+        if (node1 == null) {
+            return false;
+        }
+        if (node2 == null) {
+            return false;
+        }
+        if (node1.data.equals(node2.data)) {
+            return equals(node1.next, node2.next);
+        }
+        return false;
+    }
+
+Solution to exercise 5.4.3
+//Solution to programming exercise 3, Section 4, Chapter 5
+//File: \KW\CH05\LinkedListRec.java startLine: 253 endLine 293
+    /**
+     * Method to insert a specified data object before the first
+     * occurrence of another specified data object. If the object
+     * is not found, then the item is inserted at the end of the list.
+     * @param target the item that inData is to be inserted before
+     * @param inData the item to be inserted
+     */
+    public void insertBefore(E target, E inData) {
+        if (head == null) {
+            head = new Node<>(target, null);
+            return;
+        }
+        if (head.data.equals(target)) {
+            head = new Node<>(inData, head);
+            return;
+        }
+        insertBefore(target, inData, head);
+    }
+
+    /**
+     * Recursive method to insert a specified data object before the
+     * first occurrence of another specified data object. If the object is
+     * not found, then the item is inserted at the end of the list.
+     * @param target the item that inData is to be inserted before
+     * @param inData the item to be inserted
+     * @param node the current node
+     */
+    private void insertBefore(E target, E inData, Node<E> node) {
+        if (node.next == null) {
+            node.next = new Node<>(inData, null);
+            return;
+        }
+        if (target.equals(node.next.data)) {
+            node.next = new Node<>(inData, node.next);
+            return;
+        }
+        insertBefore(target, inData, node.next);
+    }
+
+Solution to exercise 5.4.5
+//Solution to programming exercise 5, Section 4, Chapter 5
+//File: \KW\CH05\LinkedListRec.java startLine: 321 endLine 355
+    /**
+     * Method to insert an object at a specified index
+     * @param obj The object to be inserted
+     * @param index the index
+     */
+    public void insert(E obj, int index) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            head = new Node<>(obj, head);
+        } else {
+            insert(obj, head, index - 1);
+        }
+    }
+
+    /**
+     * Method to insert an object at a specified index
+     * @param obj The object to be inserted
+     * @param pred the node preceding the node at the current indes
+     * @param index the current index
+     */
+    private void insert(E obj, Node<E> pred, int index) {
+        if (pred == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            pred.next = new Node<>(obj, pred.next);
+        } else {
+            insert(obj, pred.next, index - 1);
+        }
+    }
+
+Solution to exercise 5.5.1
+//Solution to programming exercise 1, Section 5, Chapter 5
+//File: \KW\CH05\Blob.java startLine: 47 endLine 74
+    /**
+     * Finds the number of cells in the blob at (x,y) assuming
+     * that only those cells which are adjacent horizontally
+     * or vertically are in the blob
+     * @pre Abnormal cells are in ABNORMAL color;
+     *      Other cells are in BACKGROUND color.
+     * @post All cells in the blob are in the TEMPORARY color.
+     * @param x The x-coordinate of a blob cell
+     * @param y The y-coordinate of a blob cell
+     * @return The number of cells in the blob that contains (x, y)
+     */
+    public int countCells2(int x, int y) {
+
+        if (x < 0 || x >= grid.getNCols()
+                || y < 0 || y >= grid.getNRows()) {
+            return 0;
+        } else if (!grid.getColor(x, y).equals(ABNORMAL)) {
+            return 0;
+        } else {
+            grid.recolor(x, y, TEMPORARY);
+            return 1
+                    + countCells2(x, y + 1) + countCells2(x, y - 1)
+                    + countCells2(x - 1, y) + countCells2(x + 1, y);
+        }
+    }
+
+Solution to exercise 5.6.1
+//Solution to programming exercise 1, Section 6, Chapter 5
+//File: \KW\CH05\GridColors.java startLine: 1 endLine 18
+
+import java.awt.Color;
+
+/**
+ * An interface for colors
+ * @author Koffman and Wolfgang
+ */
+public interface GridColors {
+
+    Color PATH = Color.green;
+    Color BACKGROUND = Color.white;
+    Color NON_BACKGROUND = Color.red;
+    Color ABNORMAL = NON_BACKGROUND;
+    Color TEMPORARY = Color.black;
+}
+
+Solution to exercise 5.6.3
+//Solution to programming exercise 3, Section 6, Chapter 5
+//File: \KW\CH05\Maze.java startLine: 73 endLine 79
+    public void restore() {
+        resetTemp();
+        maze.recolor(PATH, BACKGROUND);
+    }
+
+Solution to exercise 6.3.1
+//Solution to programming exercise 1, Section 3, Chapter 6
+//File: \KW\CH06\BinaryTree.java startLine: 287 endLine 310
+    /**
+     * Method to return the pre-order traversal of the binary tree as a sequence
+     * of strings each separated by a space.
+     *
+     * @return A pre-order traversal as a string
+     */
+    public String preorderToString() {
+        return preorderToString(root);
+    }
+
+    private String preorderToString(Node<E> node) {
+        StringJoiner sj = new StringJoiner(" ");
+        sj.add(node.toString());
+        if (node.left != null) {
+            sj.add(preorderToString(node.left));
+        }
+        if (node.right != null) {
+            sj.add(preorderToString(node.right));
+        }
+        return sj.toString();
+    }
+
+Solution to exercise 6.3.3
+//Solution to programming exercise 3, Section 3, Chapter 6
+//File: \KW\CH06\BinaryTree.java startLine: 335 endLine 360
+    /**
+     * A method to display the in-order traversal of a binary tree placing a
+     * left parenthesis before each subtree and a right parenthesis after each
+     * subtree. For example the expression tree shown in Figure 6.12 would be
+     * represented as (((x) + (y)) * ((a) / (b))).
+     *
+     * @return An in-order string representation of the tree
+     */
+    public String inorderToString() {
+        return inorderToString(root);
+    }
+
+    private String inorderToString(Node<E> node) {
+        StringJoiner sj = new StringJoiner(" ", "(", ")");
+        if (node.left != null) {
+            sj.add(inorderToString(node.left));
+        }
+        sj.add(node.toString());
+        if (node.right != null) {
+            sj.add(inorderToString(node.right));
+        }
+        return sj.toString();
+    }
+
+Solution to exercise 6.4.3
+//Solution to programming exercise 3, Section 4, Chapter 6
+//File: \KW\CH06\BinarySearchTree.java startLine: 323 endLine 342
+    /**
+     * Return the contents of the BinarySearchTree as a List of items in
+     * ascending order. (Note the exercise suggests returning a string of item
+     * separated by newline characters, but a List is more general and useful
+     * for the testing performed by the exercise. Also, the toString method of
+     * the BinaryTree class would be hidden and it is useful to verify some of
+     * the tests.
+     *
+     * @return A list containing the contents of the binary search tree
+     */
+    @Override
+    public List<E> toList() {
+        final List<E> result = new ArrayList<>();
+        inOrderTraverse((e, d) -> {if (e != null) result.add(e);});
+        return result;
+    }
+
+//Solution to programming exercise 3, Section 4, Chapter 6
+//File: \KW\CH06\Exercise_6_4_3.java startLine: 5 endLine 26
+    /**
+     * Displays values associated with function f in the range specified.
+     * @param low the lower bound
+     * @param high the upper bound
+     * @param step the increment
+     * @param f1
+     * @param f2
+     */
+    public static void show(int low, int high, int step, 
+            Function<Integer, Double> f1,
+            Function<Integer, Double> f2) {
+        for (int i = low; i <= high; i += step) {
+            System.out.printf("%3d % 2.4f % 2.4f%n", i, f1.apply(i), f2.apply(i));
+        }
+    }
+    
+    public static void main(String[] args) {
+        show(0, 360, 30, x -> Math.sin(Math.toRadians(x)), x -> Math.cos(Math.toRadians(x)));
+    }
+
+Solution to exercise 6.4.5
+//Solution to programming exercise 5, Section 4, Chapter 6
+//File: \KW\CH06\BinaryTree.java startLine: 234 endLine 264
+    /**
+     * Perform a in-order traversal of the tree.
+     * Performs a in-order traversal of the tree passing each node and 
+     * the node's depth to the consumer function.
+     * @param consumer The consumer of each node
+     */
+    public void inOrderTraverse(BiConsumer<E, Integer> consumer) {
+        inOrderTraverse(root, 1, consumer);
+    }
+
+    /**
+     * Perform a in-order traversal.
+     * Performs a in-order traversal of the subtree whose root is at node
+     * passing the node and the depth to the consumer function.
+     * @param node The local root
+     * @param depth The depth
+     * @param consumer The consumer of each node
+     */
+    private void inOrderTraverse(Node<E> node, int depth, 
+            BiConsumer<E, Integer> consumer) {
+        if (node == null) {
+            consumer.accept(null, depth);
+        } else {
+            inOrderTraverse(node.left, depth + 1, consumer);
+            consumer.accept(node.data, depth);
+            inOrderTraverse(node.right, depth + 1, consumer);
+        }
+    }
+
+Solution to exercise 6.5.1
+//Solution to programming exercise 1, Section 5, Chapter 6
+//File: \KW\CH06\BinarySearchTree.java startLine: 180 endLine 205
+    /**
+     * Removes target from tree.
+     *
+     * @param target Item to be removed
+     * @return true if the object was in the tree, false otherwise
+     * @post target is not in the tree
+     */
+    @Override
+    public boolean remove(E target) {
+        return delete(target) != null;
+    }
+
+    /**
+     * Determine if an item is in the tree
+     *
+     * @param target Item being sought in tree
+     * @return true If the item is in the tree, false otherwise
+     * @throws ClassCastException if target is not Comparable
+     */
+    @Override
+    public boolean contains(E target) {
+        return find(target) != null;
+    }
+
+Solution to exercise 6.6.1
+//Solution to programming exercise 1, Section 6, Chapter 6
+//File: \KW\CH06\HuffmanTree.java startLine: 147 endLine 204
+    /**
+     * A method encode for the HuffmanTree class that encodes a String of
+     * letters that is passed as its first argument. Assume that a second
+     * argument, codes (type String[]), contains the code strings (binary
+     * digits) for the symbols (space at position 0, a at position 1, b at
+     * position 2, and so on).
+     *
+     * @param str String to be encoded
+     * @param codes Array of codes
+     * @return Encoded string
+     * @throws ArrayIndexOutOfBoundsException if str contains a character other
+     * than a letter or space.
+     */
+    public static String encode(String str, String[] codes) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            int index = 0;
+            if (c != ' ') {
+                index = Character.toUpperCase(c) - 'A' + 1;
+            }
+            result.append(codes[index]);
+        }
+        return result.toString();
+    }
+
+    // The following is needed to run and test the exercise.  Note that it
+    // uses the Map class which is described in Chapter 7
+    /**
+     * Method to build the code array. Result is an ordered array of Strings
+     * where the first item is the code for the smallest symbol in the array of
+     * symbols.
+     *
+     * @return Array of codes
+     */
+    public String[] getCodes() {
+        SortedMap<Character, String> map = new TreeMap<>();
+        String currentCode = "";
+        buildCode(map, currentCode, huffTree);
+        List<String> codesList = new ArrayList<>();
+        map.forEach((k, v) -> codesList.add(v));
+        return codesList.toArray(new String[codesList.size()]);
+    }
+
+    private void buildCode(Map<Character, String> map,
+            String code,
+            BinaryTree<HuffData> tree) {
+        HuffData theData = tree.getData();
+        if (theData.symbol != '\u0000') {
+            map.put(theData.symbol, code);
+        } else {
+            buildCode(map, code + "0", tree.getLeftSubtree());
+            buildCode(map, code + "1", tree.getRightSubtree());
+        }
+    }
+//Solution to programming exercise 1, Section 6, Chapter 6
+//File: \KW\CH06\KWPriorityQueue.java startLine: 146 endLine 168
+    public void swap(int a, int b) {
+        E temp = theData.get(a);
+        theData.set(a, theData.get(b));
+        theData.set(b, temp);
+    }
+
+    @Override
+    public int size() {
+        return theData.size();
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return theData.iterator();
+    }
+
+    @Override
+    public E peek() {
+        return theData.get(0);
+    }
+
+Solution to exercise 7.1.1
+//Solution to programming exercise 1, Section 1, Chapter 7
+//File: \KW\CH07\UseOfSets.java startLine: 38 endLine 65
+    public static <E> Set<E> union(Set<E> a, Set<E> b) {
+        Set<E> c = new HashSet<>(a);
+        c.addAll(b);
+        return c;
+    }
+
+    public static <E> Set<E> intersection(Set<E> a, Set<E> b) {
+        Set<E> c = new HashSet<>(a);
+        c.retainAll(b);
+        return c;
+    }
+
+    public static <E> Set<E> difference(Set<E> a, Set<E> b) {
+        Set<E> c = new HashSet<>(a);
+        c.removeAll(b);
+        return c;
+    }
+
+    public static <E> Set<E> setMin(Set<E> a, Set<E> b) {
+        if (b.containsAll(a)) {
+            return b;
+        } else {
+            return a;
+        }
+    }
+
+Solution to exercise 7.2.1
+//Solution to programming exercise 1, Section 2, Chapter 7
+//File: \KW\CH07\WordCount.java startLine: 10 endLine 13
+    private static final Map<String, Integer> counts = new TreeMap<>();
+//Solution to programming exercise 1, Section 2, Chapter 7
+//File: \KW\CH07\WordCount2.java startLine: 18 endLine 21
+    // This exercise is no longer relevant when using Streams
+
+Solution to exercise 7.3.1
+//Solution to programming exercise 1, Section 3, Chapter 7
+//File: \KW\CH07\HashtableOpen.java startLine: 354 endLine 383
+    /** 
+     * Finds either the target key or the first empty slot in the
+     * search chain using linear probing.
+     * @pre The table is not full.
+     * @param array The hash table to be searched
+     * @param key The key of the target object
+     * @return The position of the target or the first empty slot if
+     *         the target is not in the table.
+     */
+    private static int find(Object[] array, Object key) {
+        // Calculate the starting index.
+        int index = key.hashCode() % array.length;
+        if (index < 0) {
+            index += array.length; // Make it positive.
+        }
+        // Increment index until an empty slot is reached
+        // or the key is found.
+        while ((array[index] != null)
+                && (!key.equals(array[index]))) {
+            index++;
+            // Check for wraparound.
+            if (index >= array.length) {
+                index = 0; // Wrap around.
+            }
+        }
+        return index;
+    }
+
+Solution to exercise 7.4.1
+//Solution to programming exercise 1, Section 4, Chapter 7
+//File: \KW\CH07\HashtableOpen.java startLine: 257 endLine 276
+    /**
+     * Remove the item with a given key value
+     * @param key The key to be removed
+     * @return The value associated with this key, or null
+     *         if the key is not in the table.
+     */
+    @Override
+    public V remove(Object key) {
+        int index = find(key);
+        if (table[index] == null) {
+            return null;
+        }
+        V oldValue = table[index].getValue();
+        table[index] = DELETED;
+        numKeys--;
+        return oldValue;
+    }
+
+Solution to exercise 7.4.3
+//Solution to programming exercise 3, Section 4, Chapter 7
+//File: \KW\CH07\HashtableChain.java startLine: 88 endLine 99
+        /**
+         * Return a String representation of the Entry
+         * @return a String representation of the Entry
+         *         in the form key = value
+         */
+        @Override
+        public String toString() {
+            return key.toString() + "=" + value.toString();
+        }
+//Solution to programming exercise 3, Section 4, Chapter 7
+//File: \KW\CH07\HashtableOpen.java startLine: 102 endLine 113
+        /**
+         * Return a String representation of the Entry
+         * @return a String representation of the Entry
+         *         in the form key = value
+         */
+        @Override
+        public String toString() {
+            return key.toString() + "=" + value.toString();
+        }
+//Solution to programming exercise 3, Section 4, Chapter 7
+//File: \KW\CH07\HashtableOpen.java startLine: 384 endLine 395
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner(", ", "{", "}");
+        for (Entry<K, V> entry : table) {
+            if (entry != null)
+                sj.add(entry.toString());
+        }
+        return sj.toString();
+    }
+
+Solution to exercise 7.4.5
+//Solution to programming exercise 5, Section 4, Chapter 7
+//File: \KW\CH07\HashtableChain.java startLine: 197 endLine 206
+    /** Returns the number of entries in the map 
+        @return the number of entries in the map
+     */
+    @Override
+    public int size() {
+        return numKeys;
+    }
+//Solution to programming exercise 5, Section 4, Chapter 7
+//File: \KW\CH07\HashtableOpen.java startLine: 116 endLine 125
+    /** Returns the number of entries in the map 
+        @return the number of entries in the map
+     */
+    @Override
+    public int size() {
+        return numKeys;
+    }
+
+Solution to exercise 7.5.1
+//Solution to programming exercise 1, Section 5, Chapter 7
+//File: \KW\CH07\Exercise_7_5_1.java startLine: 6 endLine 22
+    /**
+     * Method to display the key-value pairs in a Map, one pair per line.
+     * @param <K> The key type
+     * @param <V> The value type
+     * @param m The map
+     */
+    public static <K, V> void displayMap(Map<K, V> m) {
+        // Using a for-each loop
+        for (Map.Entry<K, V> e : m.entrySet()) {
+            System.out.println(e.getKey() + "\t" + e.getKey());
+        }
+        // Using a Lambda Expression
+        m.forEach((k, v) -> System.out.println(k + "\t" + v));
+    }
+
+Solution to exercise 7.5.3
+//Solution to programming exercise 3, Section 5, Chapter 7
+//File: \KW\CH07\HashSetOpen2.java startLine: 45 endLine 89
+    /** 
+     * Finds either the target key or the first empty slot in the
+     * search chain using linear probing.
+     * @pre: The table is not full.
+     * @param key The key of the target object
+     * @return The position of the target or the first empty slot if
+     *         the target is not in the table.
+     */
+    private int find(Object key) {
+        // Calculate the starting index.
+        int index = key.hashCode() % table.length;
+        if (index < 0) {
+            index += table.length; // Make it positive.
+        }
+        // Increment index until an empty slot is reached
+        // or the key is found.
+        while ((table[index] != null)
+                && (!key.equals(table[index]))) {
+            index++;
+            // Check for wraparound.
+            if (index >= table.length) {
+                index = 0; // Wrap around.
+            }
+        }
+        return index;
+    }
+
+   /** 
+     * Method contains for class HashSetOpen2.
+     * @param key The key being sought
+     * @return the value associated with this key if found;
+     *         otherwise, null
+     */
+    @Override
+    public boolean contains(Object key) {
+        // Find the first table element that is empty
+        // or the table element that contains the key.
+        int index = find(key);
+
+        // If the search is successful, return the value.
+	return table[index] != null;
+    }
+
+Solution to exercise 7.6.1
+//Solution to programming exercise 1, Section 6, Chapter 7
+//File: \KW\CH07\MapContactList.java startLine: 71 endLine 89
+        //Display should be
+        //Jones
+        //[123, 345]
+        //King
+        //[135, 357]
+        contactList.display();
+        // Jones should be in the list
+        System.out.println("Numbers for Jones "
+                + contactList.lookupEntry("Jones"));
+        // Smith should not
+        System.out.println("Numbers for Smith "
+                + contactList.lookupEntry("Smith"));
+        contactList.removeEntry("Jones");
+        // Jones should no longer be in the list
+        System.out.println("Numbers for Jones "
+                + contactList.lookupEntry("Jones"));
+
+Solution to exercise 7.7.1
+//Solution to programming exercise 1, Section 7, Chapter 7
+//File: \KW\CH07\Exercise_7_7_1.java startLine: 15 endLine 23
+        // Display contents of s in normal order
+        System.out.println("Normal Order");
+        s.forEach(System.out::println);
+        // Dispaly contents of s in reverse order
+        System.out.println("Reverse Order");
+        s.descendingSet().forEach(System.out::println);
+
+Solution to exercise 7.7.3
+//Solution to programming exercise 3, Section 7, Chapter 7
+//File: \KW\CH07\NavigableMapUtils.java startLine: 96 endLine 211
+    /**
+     * A SkipMap is a non-modifiable map view of a map that 
+     * starts at the  start item, and contains every gap items 
+     * in the original map.
+     */
+    private static class SkipMap<K, V> extends AbstractMap<K, V> {
+
+        Set<Map.Entry<K, V>> entrySet;
+
+        /**
+         * Construct a new SkipMap
+         * @param map The original map
+         * @param start The index of the first item
+         * @param gap The number of items between items
+         */
+        public SkipMap(Map<K, V> map, int start, int gap) {
+            entrySet = new SkipSet(map.entrySet(), start, gap);
+        }
+
+        /**
+         * Return a Set view of the mappings contained in this map
+         * @return a Set view of the mappings contained in this map
+         */
+        @Override
+        public Set<Map.Entry<K, V>> entrySet() {
+            return entrySet;
+        }
+    }
+
+    /**
+     * A SkipSet is a Set view of a set that starts at the 
+     * start item and contains every gap items
+     */
+    private static class SkipSet<E> extends AbstractSet<E> {
+
+        private final Set<E> theSet;
+        private final int start;
+        private final int gap;
+        private final int size;
+
+        /**
+         * Construct a new SkipSet
+         * @param theSet The set
+         * @param start The start index
+         * @param gap The gap
+         */
+        public SkipSet(Set<E> theSet, int start, int gap) {
+            this.theSet = theSet;
+            this.start = start;
+            this.gap = gap;
+            size = (theSet.size() - start) / gap;
+        }
+
+        /**
+         * Return the size of this set
+         * @return the size of this set
+         */
+        public int size() {
+            return size;
+        }
+
+        /**
+         * Skip iterator
+         */
+        private class SkipIterator implements Iterator<E> {
+
+            private int index = 0;
+            private int pos = 0;
+            private final Iterator<E> baseIterator;
+
+            public SkipIterator() {
+                index = start;
+                baseIterator = theSet.iterator();
+            }
+
+            @Override
+            public boolean hasNext() {
+                return index < theSet.size();
+            }
+
+            @Override
+            public E next() {
+                while (pos < index) {
+                    baseIterator.next();
+                    pos++;
+                }
+                pos++;
+                index += gap;
+                return baseIterator.next();
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        }
+
+        @Override
+        public Iterator<E> iterator() {
+            return new SkipIterator();
+        }
+    }
+
+    public static List<Double> computeGaps(Map<Integer, Double> valueMap,
+            int gap) {
+        List<Double> result = new ArrayList<>();
+        for (int i = 0; i < gap; i++) {
+            double average =
+                    computeAverage(new SkipMap<>(valueMap, i, gap));
+            result.add(average);
+        }
+        return result;
+    }
+
+Solution to exercise 8.-1.1
+//Solution to programming exercise 1, Section -1, Chapter 8
+//File: \KW\CH08\BubbleSortWithTrace.java startLine: 0 endLine 65
+package KW.CH08;
+
+import java.util.*;
+
+public class BubbleSortWithTrace {
+
+    public static <T extends Comparable<T>>  void sort(T[] table) {
+        CountingComparator<T> c = new CountingComparator<>();
+        int pass = 0;
+        c.clear();
+
+        int numExchanges = 0;
+        boolean exchanges;
+        System.out.print(pass + "\t");
+        printArray(table);
+        System.out.println("\t" + c.getCount() + "\t" + numExchanges);
+        pass++;
+
+        do {
+            exchanges = false;
+            numExchanges = 0;
+            c.clear();
+
+            for (int i = 0; i < (table.length - pass); i++) {
+                if (c.compare(table[i], table[i + 1]) > 0) {
+                    ++numExchanges;
+
+                    T temp = table[i];
+                    table[i] = table[i + 1];
+                    table[i + 1] = temp;
+                    exchanges = true;
+                }
+            }
+
+            System.out.print(pass + "\t");
+            printArray(table);
+            System.out.println("\t" + c.getCount() + "\t"
+                    + numExchanges);
+            pass++;
+        } while (exchanges);
+    }
+
+    private static <T> void printArray(T[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+
+            if (i < (array.length + 1)) {
+                System.out.print(" ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+
+        for (String s : args) {
+            list.add(new Integer(s));
+        }
+
+        Integer[] array = list.toArray(new Integer[list.size()]);
+        sort(array);
+    }
+}
+
+Solution to exercise 8.1.1
+//Solution to programming exercise 1, Section 1, Chapter 8
+//File: \KW\CH08\SortPeople.java startLine: 8 endLine 19
+    /**
+     * Method to sort the last half of an array of Person objects
+     * @param people The array of Person objects to be sorted
+     * @post the second half of the array is sorted by the natural
+     * ordering of the Person class
+     */
+    public static void sortSecondHalfNatural(Person[] people) {
+        Arrays.sort(people, people.length / 2, people.length);
+    }
+
+Solution to exercise 8.1.3
+//Solution to programming exercise 3, Section 1, Chapter 8
+//File: \KW\CH08\SortPeople.java startLine: 33 endLine 44
+    /**
+     * Method to sort a List of Person objects
+     * @param peopleList The list of Person objects to be sorted
+     * @post The list is sorted according to the natural
+     * ordering of the Person class
+     */
+    public static void sort(List<Person> peopleList) {
+        Collections.sort(peopleList);
+    }
+
+Solution to exercise 8.2.1
+//Solution to programming exercise 1, Section 2, Chapter 8
+//File: \KW\CH08\ReverseSelectionSort.java startLine: 0 endLine 42
+package KW.CH08;
+
+/** Implements the selection sort algorithm.
+ *  @author Koffman and Wolfgang
+ **/
+public class ReverseSelectionSort implements SortAlgorithm {
+
+    /**
+     * Sort the array in reverse order using the Selection Sort algorithm.
+     * @pre  table contains Comparable objects.
+     * @post table is sorted.
+     * @param table The array to be sorted
+     */
+    @Override
+    public <T extends Comparable<T>>  void sort(T[] table) {
+        int n = table.length;
+        for (int fill = 0; fill < n - 1; fill++) {
+            // Invariant: table[0 . . . fill - 1] is sorted.
+            int posMax = fill;
+            for (int next = fill + 1; next < n; next++) {
+                // Invariant: table[posMax] is the largest item in
+                // table[fill . . . next - 1].
+                if (table[next].compareTo(table[posMax]) > 0) {
+                    posMax = next;
+                }
+            }
+            // assert: table[posMax] is the largest item in
+            // table[fill . . . n - 1].
+            // Exchange table[fill] and table[posMax].
+            if (fill != posMax) {
+                T temp = table[fill];
+                table[fill] = table[posMax];
+                table[posMax] = temp;
+            }
+            // assert: table[fill] is the largest item in
+            // table[fill . . . n - 1].
+        }
+        // assert: table[0 . . . n - 1] is sorted in reverse order
+    }
+}
+
+Solution to exercise 8.3.1
+//Solution to programming exercise 1, Section 3, Chapter 8
+//File: \KW\CH08\InsertionSortMod.java startLine: 6 endLine 32
+
+    /**
+     * Sort the table using insertion sort algorithm.
+     * @pre  table contains Comparable objects.
+     * @post table is sorted.
+     * @param table The array to be sorted
+     */
+    @Override
+    public <T extends Comparable<T>>  void sort(T[] table) {
+        for (int nextPos = 1; nextPos < table.length; nextPos++) {
+            // Invariant: table[0 . . . nextPos - 1] is sorted.
+            // Insert element at position nextPos
+            // in the sorted subarray.
+            T nextVal = table[nextPos]; // Element to insert.
+            int nextInsert = nextPos;
+            while (nextInsert > 0
+                    && nextVal.compareTo(table[nextInsert - 1]) < 0) {
+                table[nextInsert] = table[nextInsert - 1]; // Shift down.
+                nextInsert--; // Check next smaller element.
+            }
+            // Insert nextVal at nextPos.
+            table[nextInsert] = nextVal;
+        } // End for.
+    } // End sort.
+
+Solution to exercise 8.4.1
+//Solution to programming exercise 1, Section 4, Chapter 8
+//File: \KW\CH08\ShellSortMod.java startLine: 7 endLine 43
+
+    /**
+     * Sort the table using Shell sort algorithm.
+     * @pre  table contains Comparable objects.
+     * @post table is sorted.
+     * @param table The array to be sorted
+     */
+    @Override
+    public <T extends Comparable<T>>  void sort(T[] table) {
+        // Gap between adjacent elements.
+        int gap = table.length / 2;
+        while (gap > 0) {
+            for (int nextPos = gap; nextPos < table.length;
+                    nextPos++) {
+                // Insert element at nextPos in its subarray.
+                int nextInsert = nextPos;
+                T nextVal = table[nextInsert]; // Element to insert.
+                // Shift all values > nextVal in subarray down by gap.
+                while ((nextInsert > gap - 1) // First element not shifted.
+                        && (nextVal.compareTo(table[nextInsert - gap]) < 0)) {
+                    table[nextInsert] = table[nextInsert - gap]; // Shift down.
+                    nextInsert -= gap; // Check next position in subarray.
+                }
+                table[nextInsert] = nextVal; // Insert nextVal.
+            } // End for.
+
+            // Reset gap for next pass.
+            if (gap == 2) {
+                gap = 1;
+            } else {
+                gap = (int) (gap / 2.2);
+            }
+        } // End while.
+    } // End sort.
+
+Solution to exercise 8.6.1
+//Solution to programming exercise 1, Section 6, Chapter 8
+//File: \KW\CH08\MergeSortWithTrace.java startLine: 0 endLine 81
+package KW.CH08;
+
+import java.util.*;
+
+public class MergeSortWithTrace {
+
+    public static void sort(int[] a, int level) {
+        for (int kk = 0; kk < level; kk++) {
+            System.out.print("\t");
+        }
+        System.out.printf("sort(%s)%n", arrayToString(a));
+        if (a.length > 1) {
+            int halfSize = a.length / 2;
+            for (int kk = 0; kk < level + 1; kk++) {
+                System.out.print("\t");
+            }
+            System.out.printf("halfSize = %d%n", halfSize);
+            int[] leftTable = new int[halfSize];
+            int[] rightTable = new int[a.length - halfSize];
+            System.arraycopy(a, 0, leftTable, 0, halfSize);
+            System.arraycopy(a, halfSize, rightTable, 0, a.length - halfSize);
+            for (int kk = 0; kk < level + 1; kk++) {
+                System.out.print("\t");
+            }
+            System.out.printf("leftTable = %s%n", arrayToString(leftTable));
+            for (int kk = 0; kk < level + 1; kk++) {
+                System.out.print("\t");
+            }
+            System.out.printf("rightTable = %s%n", arrayToString(rightTable));
+            sort(leftTable, level + 1);
+            sort(rightTable, level + 1);
+            merge(leftTable, rightTable, a);
+            for (int kk = 0; kk < level + 1; kk++) {
+                System.out.print("\t");
+            }
+            System.out.printf("merge(%s, %s) = %s%n", arrayToString(leftTable),
+                    arrayToString(rightTable), arrayToString(a));
+        }
+    }
+
+    public static void merge(int[] left, int[] right, int[] a) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                a[k++] = left[i++];
+            } else {
+                a[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            a[k++] = left[i++];
+        }
+        while (j < right.length) {
+            a[k++] = right[j++];
+        }
+    }
+
+    public static String arrayToString(int[] a) {
+        ArrayList<Integer> l = new ArrayList<>();
+        for (int x : a) {
+            l.add(x);
+        }
+        return l.toString();
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        for (String s : args) {
+            list.add(new Integer(s));
+        }
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
+        }
+        sort(array, 0);
+    }
+}
+
+Solution to exercise 8.9.1
+//Solution to programming exercise 1, Section 9, Chapter 8
+//File: \KW\CH08\QuickSort1WithTrace.java startLine: 0 endLine 89
+package KW.CH08;
+
+import java.util.*;
+
+public class QuickSort1WithTrace {
+
+    public static <T extends Comparable<T>>  void sort(T[] table) {
+        sort(table, 0, table.length - 1, 0);
+    }
+
+    private static <T extends Comparable<T>>  void sort(T[] table,
+            int first,
+            int last,
+            int level) {
+        for (int i = 0; i < level; i++) {
+            System.out.print(" ");
+        }
+        System.out.printf("sort(%s, %d, %d)%n",
+                arrayToString(table), first, last);
+        if (first < last) {
+            for (int i = 0; i < level; i++) {
+                System.out.print(" ");
+            }
+            int pivIndex = partition(table, first, last);
+            System.out.println("pivIndex: " + pivIndex);
+            sort(table, first, pivIndex - 1, level + 1);
+            for (int i = 0; i < level + 1; i++) {
+                System.out.print(" ");
+            }
+            System.out.printf("table: %s%n", arrayToString(table));
+            sort(table, pivIndex + 1, last, level + 1);
+            for (int i = 0; i < level + 1; i++) {
+                System.out.print(" ");
+            }
+            System.out.printf("table: %s%n", arrayToString(table));
+        }
+    }
+
+    private static <T extends Comparable<T>>  int partition(T[] table,
+            int first,
+            int last) {
+        T pivot = table[first];
+        int up = first;
+        int down = last;
+        do {
+            while ((up < last) && (pivot.compareTo(table[up]) >= 0)) {
+                ++up;
+            }
+            while (pivot.compareTo(table[down]) < 0) {
+                --down;
+            }
+            if (up < down) {
+                swap(table, up, down);
+            }
+        } while (up < down);
+        swap(table, first, down);
+        return down;
+    }
+
+    private static <T> void swap(T[] table, int i, int j) {
+        T temp = table[i];
+        table[i] = table[j];
+        table[j] = temp;
+    }
+
+    private static <T> String arrayToString(T[] array) {
+        StringBuilder stb = new StringBuilder("[");
+        for (int i = 0; i < array.length; i++) {
+            stb.append(array[i]);
+            if (i < array.length - 1) {
+                stb.append(", ");
+            } else {
+                stb.append("]");
+            }
+        }
+        return stb.toString();
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (String s : args) {
+            list.add(new Integer(s));
+        }
+        Integer[] array = list.toArray(new Integer[list.size()]);
+        sort(array);
+    }
+}
+
+Solution to exercise 8.10.1
+//Solution to programming exercise 1, Section 10, Chapter 8
+//File: \KW\CH08\TestSort.java startLine: 102 endLine 122
+    private static void dumpTable(Integer[] thetable) {
+        if (thetable.length <= 20) {
+            for (int i = 0; i < thetable.length; i++) {
+                System.out.println(i + ": " + thetable[i]);
+            }
+        } else {
+            int mid = 10;
+            for (int i = 0; i < mid; i++) {
+                System.out.println(i + ": " + thetable[i]);
+            }
+            if (mid == 10) {
+                System.out.println(". . .");
+            }
+            for (int i = thetable.length - mid; i < thetable.length; i++) {
+                System.out.println(i + ": " + thetable[i]);
+            }
+        }
+    }
+
+Solution to exercise 8.10.3
+//Solution to programming exercise 3, Section 10, Chapter 8
+//File: \KW\CH08\TestSorts.java startLine: 0 endLine 163
+package KW.CH08;
+
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+import java.io.FileReader;
+import java.util.List;
+import java.util.ArrayList;
+
+/**
+ * Program to test and time SortAlgorithms
+ * @author Paul Wolfgang
+ */
+public class TestSorts {
+
+    /** Array of SortAlgorithms */
+    private static final SortAlgorithm[] algorithms = {
+        new SelectionSort(),
+        new BubbleSort(),
+        new InsertionSort(),
+        new InsertionSortMod(),
+        new ShellSort(),
+        new ShellSortMod(),
+        new MergeSort(),
+        new TimSort(),
+        new HeapSort(),
+        new QuickSort1(),
+        new QuickSort2(),
+        new QuickSort3()
+    };
+    /** Array of sorting times */
+    double[] times = new double[algorithms.length];
+
+    /**
+     * Method to time a sort algorithm.  The algorithm is run 11 times.
+     * The result of the first time is not kept and the average of the
+     * other 10 is computed.
+     * @param algorithm The algorithm to time
+     * @param table The table of values to sort
+     * @return average runtime in seconds
+     */
+    private static double timeSort(SortAlgorithm algorithm, Integer[] table) {
+        System.out.println("Sorting using " + algorithm.getClass().getName());
+        Integer[] copy = new Integer[table.length];
+        System.arraycopy(table, 0, copy, 0, table.length);
+        algorithm.sort(table);
+        long totalTime = 0;
+        for (int i = 0; i < 10; i++) {
+            System.arraycopy(copy, 0, table, 0, table.length);
+            long startTime = System.nanoTime();
+            algorithm.sort(table);
+            long endTime = System.nanoTime();
+            totalTime += (endTime - startTime);
+        }
+        return (double) (totalTime) / 10e9;
+    }
+
+    /**
+     * Method to time the Arrays.sort algorithm.  The algorithm is run
+     * 11 times. The result of the first time is not kept and the average 
+     * of the other 10 is computed.
+     * @param algorithm The algorithm to time
+     * @param table The table of values to sort
+     * @return average runtime in seconds
+     */
+    private static double timeArraysSort(Integer[] table) {
+        Integer[] copy = new Integer[table.length];
+        System.arraycopy(table, 0, copy, 0, table.length);
+        Arrays.sort(table);
+        long totalTime = 0;
+        for (int i = 0; i < 10; i++) {
+            System.arraycopy(copy, 0, table, 0, table.length);
+            long startTime = System.nanoTime();
+            Arrays.sort(table);
+            long endTime = System.nanoTime();
+            totalTime += (endTime - startTime);
+        }
+        return (double) (totalTime) / 10e9;
+    }
+
+    /**
+     * Verifies that the elements in array are in increasing order
+     * @param test The array to verify
+     * @return true if the elements are in increasing order
+     */
+    private static <T extends Comparable<T>>  boolean verify(T[] test) {
+        boolean ok = true;
+        for (int i = 1; ok && i < test.length; i++) {
+            ok = test[i - 1].compareTo(test[i]) <= 0;
+        }
+        return ok;
+    }
+
+    /**
+     * Main method to time and test sort algorithms.  A table of random
+     * integers is generated and sorted using all of the sort algorithms.
+     * Timing data is collected and compared to the timing for Arrays.sort.
+     * @param args[0] If present is the size of array to test if it is an
+     * integer.  It not an integer, it is then assumed to be the name of
+     * a file that contains the data to be sorted
+     */
+    public static void main(String[] args) {
+        int size = -1;
+        Integer[] original = null;
+        if (args.length > 0) {
+            try {
+                size = Integer.parseInt(args[0]);
+            } catch (NumberFormatException ex) {
+                try {
+                    Scanner in = new Scanner(new FileReader(args[0]));
+                    List<Integer> list = new ArrayList<>();
+                    while (in.hasNextInt()) {
+                        list.add(in.nextInt());
+                    }
+                    size = list.size();
+                    original = list.toArray(new Integer[size]);
+                } catch (FileNotFoundException ioex) {
+                    System.err.println("Error reading from " + args[0]);
+                    System.err.println(ioex);
+                }
+            }
+        }
+        if (size < 0) {
+            Scanner scan = new Scanner(System.in);
+            while (size < 0) {
+                System.out.print("Enter the size of the array: ");
+                try {
+                    size = scan.nextInt();
+                } catch (InputMismatchException ex) {
+                    // Ignore this exception
+                }
+            }
+        }
+        //size >= 0
+        if (original == null) {
+            Random rand = new Random();
+            original = new Integer[size];
+            for (int i = 0; i < size; i++) {
+                original[i] = rand.nextInt();
+            }
+        }
+        double[] times = new double[algorithms.length];
+        for (int j = 0; j < algorithms.length; j++) {
+            Integer[] table = Arrays.copyOf(original, original.length);
+            times[j] = timeSort(algorithms[j], table);
+            if (!verify(table)) {
+                System.err.println(algorithms[j].getClass() + " failed");
+            }
+        }
+        double arraysSortTime = timeArraysSort(original);
+        System.out.printf("Arrays.sort took %.3f seconds to sort %d integers%n",
+                arraysSortTime, size);
+        for (int j = 0; j < algorithms.length; j++) {
+            System.out.printf("%s took %.3f seconds%n",
+                    algorithms[j].getClass().getName(), times[j]);
+        }
+    }
+}
+
+
+Solution to exercise 8.11.1
+//Solution to programming exercise 1, Section 11, Chapter 8
+//File: \KW\CH08\QuickSort3.java startLine: 9 endLine 75
+    /**
+     * Sort a part of the table using the quicksort algorithm.
+     * @post The part of table from first through last is sorted.
+     * @param <T> the type being sorted
+     * @param table The array to be sorted
+     * @param first The index of the low bound
+     * @param last The index of the high bound
+     */
+    @Override
+    protected <T extends Comparable<T>>  void quickSort(T[] table,
+            int first,
+            int last) {
+        if (first < last) { // There is data to be sorted.
+            // Partition the table.
+            int[] pivIndex = partition3(table, first, last);
+            // Sort the left half.
+            quickSort(table, first, pivIndex[0] - 1);
+            // Sort the right half.
+            quickSort(table, pivIndex[1] + 1, last);
+        }
+    }
+
+    /**
+     * Partition the table so that values from first to pivIndex[0]
+     * are less than the pivot value, and values from
+     * pivIndex[1] to last are greater than the pivot value.
+     * This partitioning algorithm is based upon Dijkstra's
+     * Dutch National Flag problem.
+     * @param table The table to be partitioned
+     * @param first The index of the low bound
+     * @param last  The index of the high bound
+     * @return The boundaries of the pivot value
+     */
+    protected <T extends Comparable<T>>  int[] partition3(T[] table,
+            int first,
+            int last) {
+        // Put the median of table[first], table[middle], table[last]
+        // int table[first] and use this value as the pivot
+        bubbleSort3(table, first, last);
+        // Pick the middle value for the pivot.
+        T pivot = table[first + (last - first) / 2];
+        int less = first;
+        int equal = last;
+        int greater = last;
+        // Invariant:
+        // for all i, 0 <= i <=last
+        // 0 <= i < less ==> table[i] < pivot
+        // less <= i <= equal table[i] is unknown
+        // equal < i < greater table[i] == pivot
+        // greater < i <= last table[i] > pivot
+        while (less <= equal) {
+            if (table[equal].compareTo(pivot) == 0) {
+                equal--;
+            } else if (table[equal].compareTo(pivot) < 0) {
+                swap(table, less, equal);
+                less++;
+            } else {
+                swap(table, equal, greater);
+                equal--;
+                greater--;
+            }
+        }
+        return new int[]{less, greater};
+    }
+
+Solution to exercise 9.1.1
+//Solution to programming exercise 1, Section 1, Chapter 9
+//File: \KW\CH09\BinarySearchTreeWithRotate.java startLine: 34 endLine 53
+    /**
+     * Method to perform a left rotation (rotateLeft).
+     * @pre  localRoot is the root of a binary search tree
+     * @post localRoot.right is the root of a binary search tree
+     *       localRoot.right.right is raised one level
+     *       localRoot.right.left does not change levels
+     *       localRoot.left is lowered one level
+     *       the new localRoot is returned.
+     * @param localRoot The root of the binary tree to be rotated
+     * @return the new root of the rotated tree
+     */
+    protected Node<E> rotateLeft(Node<E> localRoot) {
+        Node<E> temp = localRoot.right;
+        localRoot.right = temp.left;
+        temp.left = localRoot;
+        return temp;
+    }
+
+Solution to exercise 9.2.1
+//Solution to programming exercise 1, Section 2, Chapter 9
+//File: \KW\CH09\AVLTree.java startLine: 169 endLine 213
+    /**
+     * Method to rebalance right.
+     * @pre localRoot is the root of an AVL subtree that is
+     *      critically right-heavy.
+     * @post Balance is restored.
+     * @param localRoot Root of the AVL subtree
+     *        that needs rebalancing
+     * @return a new localRoot
+     */
+    private AVLNode<E> rebalanceRight(AVLNode<E> localRoot) {
+        // Obtain reference to right child.
+        AVLNode<E> rightChild = (AVLNode<E>) localRoot.right;
+        // See whether right-left heavy.
+        if (rightChild.balance < AVLNode.BALANCED) {
+            // Obtain reference to right-left child.
+            AVLNode<E> rightLeftChild = (AVLNode<E>) rightChild.left;
+            // Adjust the balances to be their new values after
+            // the rotations are performed.
+            if (rightLeftChild.balance > AVLNode.BALANCED) {
+                rightChild.balance = AVLNode.RIGHT_HEAVY;
+                rightLeftChild.balance = AVLNode.BALANCED;
+                localRoot.balance = AVLNode.BALANCED;
+            } else if (rightLeftChild.balance < AVLNode.BALANCED) {
+                rightChild.balance = AVLNode.BALANCED;
+                rightLeftChild.balance = AVLNode.BALANCED;
+                localRoot.balance = AVLNode.LEFT_HEAVY;
+            } else {
+                rightChild.balance = AVLNode.BALANCED;
+                localRoot.balance = AVLNode.BALANCED;
+            }
+            // Perform right rotation.
+            localRoot.right = rotateRight(rightChild);
+        } else { //right-right case
+            // In this case the rightChild (the new root)
+            // and the root (new left child) will both be balanced
+            // after the rotation.
+            rightChild.balance = AVLNode.BALANCED;
+            localRoot.balance = AVLNode.BALANCED;
+        }
+        // Now rotate the local root left.
+        return (AVLNode<E>) rotateLeft(localRoot);
+    }
+
+Solution to exercise 9.2.3
+//Solution to programming exercise 3, Section 2, Chapter 9
+//File: \KW\CH09\AVLTree.java startLine: 234 endLine 254
+    /**
+     * Method to increment the balance field and to reset the value of
+     * increase.
+     * @pre The balance field was correct prior to an insertion [or
+     *      removal,] and an item is either been added to the right[ or removed
+     *      from the left].
+     * @post The balance is incremented and the increase flags is set to
+     *       false if the overall height of this subtree has not changed.
+     * @param node The AVL node whose balance is to be incremented
+     */
+    private void incrementBalance(AVLNode<E> node) {
+        // Decrement the balance.
+        node.balance++;
+        if (node.balance == AVLNode.BALANCED) {
+            // If now balanced, overall height has not increased.
+            increase = false;
+        }
+    }
+
+Solution to exercise 9.3.1
+//Solution to programming exercise 1, Section 3, Chapter 9
+//File: \KW\CH09\RedBlackTree.java startLine: 128 endLine 160
+            if (localRoot.right == null) {
+                // create new right child
+                localRoot.right = new RedBlackNode<>(item);
+                addReturn = true;
+                return localRoot;
+            } else { // need to search
+                // check for two red children swap colors
+                moveBlackDown(localRoot);
+                // recursively insert on the right
+                localRoot.right =
+                        add((RedBlackNode<E>) localRoot.right, item);
+                // see if the right child is now red
+                if (((RedBlackNode) localRoot.right).isRed) {
+                    if (localRoot.right.right != null && ((RedBlackNode) localRoot.right.right).isRed) {
+                        // right-right grandchild is also red
+                        // single rotate is necessary
+                        ((RedBlackNode) localRoot.right).isRed = false;
+                        localRoot.isRed = true;
+                        return rotateLeft(localRoot);
+                    } else if (localRoot.right.left != null && ((RedBlackNode<E>) localRoot.right.left).isRed) {
+                        // left-right grandchild is also red
+                        // double rotate is necessary
+                        localRoot.right = rotateRight(localRoot.right);
+                        ((RedBlackNode<E>) localRoot.right).isRed = false;
+                        localRoot.isRed = true;
+                        return rotateLeft(localRoot);
+                    }
+                }
+                return localRoot;
+            }
+
+Solution to exercise 9.5.1
+//Solution to programming exercise 1, Section 5, Chapter 9
+//File: \KW\CH09\BTree.java startLine: 266 endLine 298
+    /**
+     * Perform a binary search of the array data for target.
+     * @param target The item being sought
+     * @param data The sorted array the may contain the data
+     * @param first The first index to be searched
+     * @param last One past the last index to be searched
+     * @return The smallest index such that target >= data[index]
+     */
+    private int binarySearch(E target, E[] data, int first, int last) {
+        if (first == last) {
+            return first;
+        }
+        if (last - first == 1) {
+            if (target.compareTo(data[first]) <= 0) {
+                return first;
+            } else {
+                return last;
+            }
+        }
+        int middle = first + (last - first) / 2;
+        int compResult = target.compareTo(data[middle]);
+        if (compResult == 0) {
+            return middle;
+        }
+        if (compResult < 0) {
+            return binarySearch(target, data, first, middle);
+        } else {
+            return binarySearch(target, data, middle + 1, last);
+        }
+    }
+
+Solution to exercise 9.6.1
+//Solution to programming exercise 1, Section 6, Chapter 9
+//File: \KW\CH09\SkipList.java startLine: 132 endLine 167
+
+    /**
+     * Inserts item where it belongs in the skip list.
+     *
+     * @param item The item to be inserted
+     * @return true If the item is inserted, false if the item was already in
+     * the tree.
+     */
+    @Override
+    public boolean add(E item) {
+        SLNode<E>[] update = search(item);
+        if (update[0].links[0] != null
+                && update[0].links[0].data.compareTo(item) == 0) {
+            return false; // Item already in Skip List
+        }
+        // Increment size and adjust maxLevel
+        size++;
+        if (size > maxCap) {
+            maxLevel++;
+            maxCap = computeMaxCap(maxLevel);
+            head.links = Arrays.copyOf(head.links, maxLevel);
+            update = Arrays.copyOf(update, maxLevel);
+            update[maxLevel - 1] = head;
+        }
+        // Create new node for item
+        SLNode<E> newNode = new SLNode<>(logRandom(), item);
+        // Splice new node into list
+        for (int i = 0; i < newNode.links.length; i++) {
+            newNode.links[i] = update[i].links[i];
+            update[i].links[i] = newNode;
+        }
+        return true;
+    }
+
+Solution to exercise A.3.1
+//Solution to programming exercise 1, Section 3, Chapter A
+//File: \KW\AXA\ExerciseA_3_1.java startLine: 12 endLine 23
+        int nextInt = 1;
+        do {
+            if (nextInt % 2 == 0) {
+                sum += nextInt;
+            } else {
+                prod *= nextInt;
+            }
+            nextInt++;
+        } while (nextInt <= maxValue + 1);
+
+Solution to exercise A.4.1
+//Solution to programming exercise 1, Section 4, Chapter A
+//File: \KW\AXA\Exercise_A_4_1.java startLine: 8 endLine 16
+    public static void main(String[] args) {
+        System.out.println("n \tpower of 2");
+        for (int i = 1; i < 30; i += 2) {
+            System.out.println(i + "\t" + Math.pow(2, i));
+        }
+    }
+
+Solution to exercise A.5.1
+//Solution to programming exercise 1, Section 5, Chapter A
+//File: \KW\AXA\ExerciseA_5_1.java startLine: 10 endLine 21
+        int posComma = s.indexOf(", ");
+        int posSpace = s.indexOf(' ', posComma + 2);
+        int posSlash1 = s.indexOf('/', posSpace + 1);
+        int posSlash2 = s.indexOf('/', posSlash1 + 1);
+        String token1 = s.substring(0, posComma);
+        String token2 = s.substring(posComma + 2, posSpace);
+        String token3 = s.substring(posSpace + 1, posSlash1);
+        String token4 = s.substring(posSlash1 + 1, posSlash2);
+        String token5 = s.substring(posSlash2 + 1);
+
+Solution to exercise A.5.3
+//Solution to programming exercise 3, Section 5, Chapter A
+//File: \KW\AXA\ExerciseA_5_3.java startLine: 11 endLine 16
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+
+Solution to exercise A.5.5
+//Solution to programming exercise 5, Section 5, Chapter A
+//File: \KW\AXA\ExerciseA_5_5.java startLine: 7 endLine 17
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(symbols[0]);
+        for (int i = 1; i < symbols.length; i++) {
+            sb.append(" + ");
+            sb.append(symbols[i]);
+        }
+        sb.append(")");
+
+Solution to exercise A.6.1
+//Solution to programming exercise 1, Section 6, Chapter A
+//File: \KW\AXA\ExercisesA_6.java startLine: 15 endLine 18
+        i1 = i1 * 2;
+
+Solution to exercise A.7.1
+//Solution to programming exercise 1, Section 7, Chapter A
+//File: \KW\AXA\Person2.java startLine: 203 endLine 213
+    /**
+     * Return the Person's initials as a string. There should be a peroid
+     * after each initial.
+     * @return the Person's initials as a string.
+     */
+    public String getInitials() {
+        return givenName.charAt(0) + "." + familyName.charAt(0) + ".";
+    }
+
+Solution to exercise A.7.3
+//Solution to programming exercise 3, Section 7, Chapter A
+//File: \KW\AXA\Person2.java startLine: 179 endLine 191
+    /**
+     * Compare this Person object to another Person object.  If this Person's
+     * ID is less (greater) than the other Person's ID return a negative
+     * (positive) value. Otherwise return 0.
+     * @param other The other Person2 object
+     * @return <0 if this < other, 0 if this == other >0 if this > other
+     */
+    public int compareTo(Person2 other) {
+        return IDNumber.compareTo(other.IDNumber);
+    }
+
+Solution to exercise A.8.1
+//Solution to programming exercise 1, Section 8, Chapter A
+//File: \KW\AXA\ExerciseA_8_1.java startLine: 8 endLine 44
+    /**
+     * Method to determine if two arrays contain the same elements with the
+     * same multiplicities.
+     * @param a The first array
+     * @param b The second array
+     * @return true if b contains the same elements as a
+     */
+    public static boolean sameElements(int[] a, int[] b) {
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (countOccurances(a, a[i]) != countOccurances(b, a[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Method to count the number of times a integer occurs in an array
+     * @param x The array
+     * @param t The target
+     * @return The number of times t occurs in x
+     */
+    public static int countOccurances(int x[], int t) {
+        int count = 0;
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] == t) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+Solution to exercise A.8.3
+//Solution to programming exercise 3, Section 8, Chapter A
+//File: \KW\AXA\ExerciseA_8_3.java startLine: 11 endLine 17
+        letters[i] = new char[next.length()];
+        for (int j = 0; j < next.length(); j++) {
+            letters[i][j] = next.charAt(j);
+        }
+
+Solution to exercise A.9.1
+//Solution to programming exercise 1, Section 9, Chapter A
+//File: \KW\AXA\Card.java startLine: 1 endLine 21
+public class Card {
+    public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
+    public enum Rank {DUCE, TREY, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE};
+    
+    private final Suit suit;
+    private final Rank rank;
+    
+    public Card(String rankName, String suitName) {
+        suit = Suit.valueOf(suitName);
+        rank = Rank.valueOf(rankName);
+    }
+    
+    @Override
+    public String toString() {
+        return rank + " of " + suit;
+    }
+
+}
+
+Solution to exercise A.10.1
+//Solution to programming exercise 1, Section 10, Chapter A
+//File: \KW\AXA\Person.java startLine: 1 endLine 5
+import java.io.BufferedReader;
+import java.io.IOException;
+//Solution to programming exercise 1, Section 10, Chapter A
+//File: \KW\AXA\Person.java startLine: 151 endLine 175
+    /**
+     * Method to read a Person object from a buffered reader.  Each person
+     * object is represented by four data lines containing the givenNeme,
+     * familyName, IDNumber, and birthYear.
+     * @param br The BufferedReader
+     * @return a new Person object
+     */
+    public static Person readPerson(BufferedReader br) {
+        try {
+            String familyName = br.readLine();
+            String givenName = br.readLine();
+            String IDNumber = br.readLine();
+            String birthYear = br.readLine();
+            return new Person(familyName, givenName, IDNumber,
+                Integer.parseInt(birthYear));
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+            System.exit(1);
+        }
+        // should not get here
+        return null;
+    }
+
+Solution to exercise A.11.1
+//Solution to programming exercise 1, Section 11, Chapter A
+//File: \KW\AXA\ExerciseA_11_1.java startLine: 22 endLine 40
+        } catch (IOException ioex) {
+            System.err.println("IO Exception");
+            ioex.printStackTrace();
+            System.exit(1);
+        } catch (NumberFormatException nfex) {
+            System.err.println("Number Format Exception");
+            nfex.printStackTrace();
+            System.exit(1);
+        } catch (ArithmeticException arex) {
+            average = 0;
+            System.err.println("Arithmetic exception");
+            arex.printStackTrace();
+            System.exit(1);
+        } finally {
+            System.out.println("That's all folks");
+        }
+
+Solution to exercise A.12.1
+//Solution to programming exercise 1, Section 12, Chapter A
+//File: \KW\AXA\ExerciseA_12_1.java startLine: 35 endLine 41
+        } catch (FileNotFoundException ex) {
+            System.err.println(ex.getMessage());
+            System.exit(1);
+        }
+
