@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.AbstractList;
 
 /**
- * This class implements some of the methods of the Java
- *  ArrayList class.
- *  @author Koffman & Wolfgang
+ * This class implements some of the methods of the Java ArrayList class.
+ * 
+ * @author Koffman & Wolfgang
  */
 public class KWArrayList<E>
 // Insert solution to programming exercise 1, section 9, chapter 2 here
@@ -24,24 +24,27 @@ public class KWArrayList<E>
     private int capacity = 0;
 
     /**
-     * Construct an empty KWArrayList with the default
-     * initial capacity
+     * Construct an empty KWArrayList with the default initial capacity
      */
     public KWArrayList() {
         capacity = INITIAL_CAPACITY;
         theData = (E[]) new Object[capacity];
     }
 
-// Insert solution to programming exercise 2, section 3, chapter 2 here
+    // Insert solution to programming exercise 2, section 3, chapter 2 here
+    public KWArrayList(int capacity) {
+        this.capacity = capacity;
+        theData = (E[]) new Object[capacity];
+    }
 
     /**
-     * Add an entry to the data inserting it before the
-     * item at the specified index.
-     * @param index - The index of the time that the new
-     *        value it to be inserted in front of.
+     * Add an entry to the data inserting it before the item at the specified index.
+     * 
+     * @param index    - The index of the time that the new value it to be inserted
+     *                 in front of.
      * @param theValue - The value to be inserted
-     * @throws ArrayIndexOUtOfBoundsException if index is
-     *         less than zero or greater than size
+     * @throws ArrayIndexOUtOfBoundsException if index is less than zero or greater
+     *                                        than size
      */
     public boolean add(E anEntry) {
         if (size == capacity) {
@@ -54,11 +57,12 @@ public class KWArrayList<E>
 
     /**
      * Get a value in the array based on its index.
+     * 
      * @param index - The index of the item desired
      * @return The contents of the array at that index
-     * @throws ArrayIndexOutOfBoundsException - if the index
-     *         is negative or if it is greater than or equal to the
-     *         current size
+     * @throws ArrayIndexOutOfBoundsException - if the index is negative or if it is
+     *                                        greater than or equal to the current
+     *                                        size
      */
     public E get(int index) {
         if (index < 0 || index >= size) {
@@ -69,12 +73,13 @@ public class KWArrayList<E>
 
     /**
      * Set the value in the array based on its index.
-     * @param index - The index of the item desired
+     * 
+     * @param index    - The index of the item desired
      * @param newValue - The new value to store at this position
      * @return The old value at this position
-     * @throws ArrayIndexOutOfBoundsException - if the index
-     *         is negative or if it is greater than or equal to the
-     *         current size
+     * @throws ArrayIndexOutOfBoundsException - if the index is negative or if it is
+     *                                        greater than or equal to the current
+     *                                        size
      */
     public E set(int index, E newValue) {
         if (index < 0 || index >= size) {
@@ -87,11 +92,12 @@ public class KWArrayList<E>
 
     /**
      * Remove an entry based on its index
+     * 
      * @param index - The index of the entry to be removed
      * @return The value removed
-     * @throws ArrayIndexOutOfBoundsException - if the index
-     *         is negative or if it is greater than or equal to the
-     *         current size
+     * @throws ArrayIndexOutOfBoundsException - if the index is negative or if it is
+     *                                        greater than or equal to the current
+     *                                        size
      */
     public E remove(int index) {
         if (index < 0 || index >= size) {
@@ -115,12 +121,31 @@ public class KWArrayList<E>
 
     /**
      * Get the current size of the array
+     * 
      * @return The current size of the array
      */
     public int size() {
         return size;
     }
 
-// Insert solution to programming exercise 1, section 3, chapter 2 here
+    // Exercise 2.3.1 Implement the indexOf method of the KWArrayList<E> class.
+    public int indexOf(E anEntry) {
+        for (int i = 0; i < theData.length; i++) {
+            if (theData[i].equals(anEntry)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        KWArrayList<Integer> list = new KWArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.remove(2);
+        System.out.println(list.indexOf(4));
+    }
 }
-/*</listing>*/
+/* </listing> */
